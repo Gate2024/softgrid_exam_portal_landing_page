@@ -1,33 +1,39 @@
 import logo from '../../assets/logos/navbar/SG_ExamPro.png'
+import linkedInIcon from '../../assets/icons/footer/akar-icons_linkedin-box-fill.svg'
+import instagramIcon from '../../assets/icons/footer/famicons_logo-instagram.svg'
+import youtubeIcon from '../../assets/icons/footer/youtube.svg'
 
-const productLinks = [
+const quickLinks = [
   ['Features', '#features'],
   ['How It Works', '#how-it-works'],
   ['Screenshots', '#screenshots'],
   ['Security', '#security'],
-  ['Pricing', '#pricing'],
+  ['Pricing', null],
+  ['Dashboard', null],
+  ['Contact Us', '#contact'],
 ]
 
-const resourceLinks = [
-  ['Documentation', '#documentation'],
-  ['API Reference', '#api-reference'],
-  ['Blog', '#blog'],
-  ['Support Center', '#support-center'],
-  ['Status Page', '#status-page'],
+const featureLinks = [
+  ['Online Examination Management', null],
+  ['Question Bank Management', null],
+  ['Automatic Result Generation', null],
+  ['Candidate Performance Reports', null],
+  ['Secure Authentication & Roles', null],
+  ['Responsive User Interface', null],
 ]
 
 const contactLinks = [
-  ['Contact Us', '#contact'],
-  ['Sales', '#sales'],
-  ['Privacy Policy', '#privacy-policy'],
-  ['Terms & Conditions', '#terms-and-conditions'],
-  ['Cookie Policy', '#cookie-policy'],
+  ['Contact Us', 'https://softgridinfo.in/contact'],
+  ['Sales', 'https://softgridinfo.in/sales'],
+  ['Privacy Policy', 'https://softgridinfo.in/privacy-policy'],
+  ['Terms & Conditions', 'https://softgridinfo.in/terms-and-conditions'],
+  ['Cookie Policy', 'https://softgridinfo.in/cookie-policy'],
 ]
 
 const socialLinks = [
-  ['in', 'LinkedIn'],
-  ['▶', 'YouTube'],
-  ['📘', 'Facebook'],
+  [linkedInIcon, 'LinkedIn', 'https://www.linkedin.com/company/softgrid-info-pvt-ltd'],
+  [instagramIcon, 'Instagram', 'https://www.instagram.com/softgridinfo/'],
+  [youtubeIcon, 'YouTube', 'https://youtube.com/@softgridinfo?si=PptiXFEJXZpARelh'],
 ]
 
 function FooterLinkGroup({ title, links }) {
@@ -54,19 +60,21 @@ function Footer() {
             A secure, scalable examination management platform built for modern educational institutions and training organizations.
           </p>
           <div className="site-footer__socials" aria-label="Social links">
-            {socialLinks.map(([glyph, label]) => (
-              <button aria-label={label} key={label} type="button">{glyph}</button>
+            {socialLinks.map(([icon, label, href]) => href ? (
+              <a aria-label={label} href={href} key={label}><img src={icon} alt="" /></a>
+            ) : (
+              <button aria-label={label} key={label} type="button"><img src={icon} alt="" /></button>
             ))}
           </div>
         </div>
-        <FooterLinkGroup title="Product" links={productLinks} />
-        <FooterLinkGroup title="Resources" links={resourceLinks} />
+        <FooterLinkGroup title="Quick Links" links={quickLinks} />
+        <FooterLinkGroup title="Product Features" links={featureLinks} />
         <FooterLinkGroup title="Contact" links={contactLinks} />
       </div>
       <div className="site-footer__bottom">
         <div className="site-footer__bottom-inner">
           <p>© 2026 ExamPortal. All rights reserved.</p>
-          <p>Built with React · Node.js · MongoDB</p>
+          <p>Designed &amp; Developed by SoftGrid Info Pvt. Ltd.</p>
         </div>
       </div>
     </footer>

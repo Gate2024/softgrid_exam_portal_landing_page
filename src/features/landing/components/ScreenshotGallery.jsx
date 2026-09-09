@@ -1,9 +1,15 @@
 import { useRef, useState } from 'react'
+import loginScreen from '../../../assets/images/scrrenshotsection/login_screen.png'
+import adminDashboard from '../../../assets/images/scrrenshotsection/admin_dashboard.png'
+import examCreation from '../../../assets/images/scrrenshotsection/exam_creation.png'
+import candidateInterface from '../../../assets/images/scrrenshotsection/candidate_interface.png'
+import resultDashboard from '../../../assets/images/scrrenshotsection/result_dashboard.png'
 
 const screenshotStates = [
   {
     id: 'login',
     label: 'Login Screen',
+    image: loginScreen,
     route: 'examportal.app/login-screen',
     activeSection: 'Dashboard',
     cards: [
@@ -17,6 +23,7 @@ const screenshotStates = [
   {
     id: 'admin',
     label: 'Admin Dashboard',
+    image: adminDashboard,
     route: 'examportal.app/admin-dashboard',
     activeSection: 'Dashboard',
     cards: [
@@ -30,6 +37,7 @@ const screenshotStates = [
   {
     id: 'creation',
     label: 'Exam Creation',
+    image: examCreation,
     route: 'examportal.app/exam-creation',
     activeSection: 'Exams',
     cards: [
@@ -41,21 +49,9 @@ const screenshotStates = [
     panelRows: ['Set exam details', 'Select question bank', 'Publish when ready'],
   },
   {
-    id: 'question-bank',
-    label: 'Question Bank',
-    route: 'examportal.app/question-bank',
-    activeSection: 'Questions',
-    cards: [
-      { label: 'Total questions', value: '12,450' },
-      { label: 'Verified items', value: '9,820' },
-      { label: 'Categories', value: '28' },
-    ],
-    panelTitle: 'Question library',
-    panelRows: ['Mathematics · Algebra', 'Science · Physics', 'English · Comprehension'],
-  },
-  {
     id: 'candidate',
     label: 'Candidate Interface',
+    image: candidateInterface,
     route: 'examportal.app/candidate-interface',
     activeSection: 'Candidates',
     cards: [
@@ -69,6 +65,7 @@ const screenshotStates = [
   {
     id: 'results',
     label: 'Results Dashboard',
+    image: resultDashboard,
     route: 'examportal.app/results-dashboard',
     activeSection: 'Reports',
     cards: [
@@ -81,8 +78,6 @@ const screenshotStates = [
   },
 ]
 
-const sidebarItems = ['Dashboard', 'Exams', 'Questions', 'Candidates', 'Reports', 'Settings']
-
 function BrowserBar({ route }) {
   return (
     <div className="screenshot-preview__browser">
@@ -93,24 +88,6 @@ function BrowserBar({ route }) {
       </div>
       <div className="screenshot-preview__address">{route}</div>
     </div>
-  )
-}
-
-function PreviewSidebar({ activeSection }) {
-  return (
-    <aside className="screenshot-preview__sidebar" aria-label="Preview navigation">
-      <div className="screenshot-preview__sidebar-mark">EP</div>
-      <nav className="screenshot-preview__menu">
-        {sidebarItems.map((item) => (
-          <div
-            className={`screenshot-preview__menu-item${item === activeSection ? ' is-active' : ''}`}
-            key={item}
-          >
-            {item}
-          </div>
-        ))}
-      </nav>
-    </aside>
   )
 }
 
@@ -154,10 +131,8 @@ function ScreenshotPreview({ state }) {
       <BrowserBar route={state.route} />
       <div className="screenshot-preview__body">
         <div className="screenshot-preview__inner">
-          <PreviewSidebar activeSection={state.activeSection} />
-          <PreviewContent state={state} />
+          {state.image ? <div className="screenshot-preview__main-content screenshot-preview__image-content"><img className="screenshot-preview__image" src={state.image} alt={`${state.label} screenshot`} /></div> : <PreviewContent state={state} />}
         </div>
-        <div className="screenshot-preview__floating-label">{state.label}</div>
       </div>
     </div>
   )

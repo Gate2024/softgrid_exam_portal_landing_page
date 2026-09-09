@@ -10,8 +10,8 @@ function CTASection() {
           Manage examinations, automate evaluation, and gain actionable insights from one powerful platform.
         </p>
         <div className="cta-section__actions">
-          <a className="cta-section__primary" href="#get-started">Get Started Today</a>
-          <a className="cta-section__secondary" href="#demo">Request a Demo</a>
+          <a className="cta-section__primary" href="https://exam.softgridinfo.in/student/login">Get Started Today</a>
+          <a className="cta-section__secondary" href="https://softgridinfo.in/contact">Request a Demo</a>
         </div>
         <p className="cta-section__microcopy">No credit card required · Free 14-day trial · Cancel anytime</p>
       </div>
